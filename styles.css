@@ -54,10 +54,12 @@ body {
     margin: 0 auto;
     padding: 0 20px;
     position: relative;
+    width: 100%;
+    overflow-x: hidden;
 }
 
 /* Tipografía */
-h1, h2, h3, .btn {
+h1, h2, h3, .btn, .nav-logo {
     font-family: 'Orbitron', sans-serif;
     font-weight: 700;
     letter-spacing: 1px;
@@ -87,6 +89,87 @@ h2.section-title::after {
     position: relative;
 }
 
+/* Navegación */
+.main-nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 0;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+    background-color: rgba(0, 0, 0, 0.8);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    transition: all 0.3s ease;
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.nav-logo {
+    font-size: 1.8rem;
+    color: var(--text-primary);
+    text-decoration: none;
+}
+
+.nav-links {
+    display: flex;
+    list-style: none;
+    gap: 30px;
+    align-items: center;
+}
+
+.nav-links a {
+    color: var(--text-secondary);
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.3s ease;
+    position: relative;
+    padding: 5px 0;
+}
+
+.nav-links a::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background-color: var(--accent-primary);
+    transition: width 0.3s ease;
+}
+
+.nav-links a:hover {
+    color: var(--accent-primary);
+}
+
+.nav-links a:hover::after {
+    width: 100%;
+}
+
+.nav-cta {
+    background-color: var(--accent-primary);
+    color: var(--bg-darker) !important;
+    padding: 8px 20px !important;
+    border-radius: 30px;
+    box-shadow: 0 0 10px rgba(0, 226, 226, 0.5);
+}
+
+.nav-cta:hover {
+    box-shadow: 0 0 15px rgba(0, 226, 226, 0.8);
+    background-color: var(--accent-primary);
+}
+
+.nav-toggle {
+    display: none;
+    font-size: 1.5rem;
+    cursor: pointer;
+    color: var(--text-primary);
+}
+
 /* Secciones */
 section {
     padding: 100px 0;
@@ -112,6 +195,7 @@ section::before {
     justify-content: space-between;
     padding: 0;
     position: relative;
+    gap: 30px;
 }
 
 .hero::after {
@@ -127,8 +211,9 @@ section::before {
 
 .hero-content {
     flex: 1;
-    padding-right: 50px;
+    padding-right: 30px;
     z-index: 2;
+    max-width: 600px;
 }
 
 .logo-container {
@@ -212,11 +297,13 @@ section::before {
 
 .mockup-screen {
     width: 300px;
-    height: 600px;
+    height: auto;
+    max-height: 600px;
     border-radius: 30px;
     transform: perspective(1000px) rotateY(-15deg);
     transition: transform 0.5s ease;
     filter: drop-shadow(0 0 10px rgba(0, 226, 226, 0.3));
+    object-fit: contain;
 }
 
 /* Efecto de hover para la imagen del mockup */
@@ -336,9 +423,13 @@ section::before {
 
 .benefits-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
     gap: 30px;
     margin-top: 50px;
+    width: 100%;
+    max-width: 1200px;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .benefit-card {
@@ -349,6 +440,11 @@ section::before {
     position: relative;
     overflow: hidden;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    height: 100%;
 }
 
 .benefit-card:hover {
@@ -407,6 +503,10 @@ section::before {
     gap: 40px;
     margin-top: 50px;
     position: relative;
+    width: 100%;
+    max-width: 1200px;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .steps-container::before {
@@ -480,11 +580,13 @@ section::before {
     justify-content: space-between;
     gap: 50px;
     background-color: var(--bg-darker);
+    flex-wrap: wrap;
 }
 
 .philosophy-content {
     flex: 1;
     max-width: 600px;
+    padding: 0 15px;
 }
 
 .quote-container {
@@ -529,6 +631,7 @@ blockquote p {
     display: flex;
     justify-content: center;
     align-items: center;
+    padding: 20px 0;
 }
 
 .interface-image {
@@ -539,11 +642,13 @@ blockquote p {
 
 .interface-screen {
     width: 300px;
-    height: 600px;
+    height: auto;
+    max-height: 600px;
     border-radius: 30px;
     transform: perspective(1000px) rotateY(15deg);
     transition: transform 0.5s ease;
     filter: drop-shadow(0 0 10px rgba(255, 58, 140, 0.3));
+    object-fit: contain;
 }
 
 /* Efecto de hover para la imagen del interface */
@@ -764,6 +869,7 @@ blockquote p {
     margin: 50px 0;
     position: relative;
     overflow: hidden;
+    width: 100%;
 }
 
 .final-cta::before {
@@ -800,6 +906,7 @@ blockquote p {
 .cta-features {
     display: flex;
     justify-content: center;
+    flex-wrap: wrap;
     gap: 40px;
     margin-top: 40px;
 }
@@ -943,14 +1050,20 @@ blockquote p {
 
 /* Responsive Design */
 @media (max-width: 1200px) {
+    .container {
+        padding: 0 30px;
+    }
+    
     .hero {
         flex-direction: column;
         text-align: center;
         gap: 50px;
+        padding-top: 50px;
     }
 
     .hero-content {
         padding-right: 0;
+        max-width: 100%;
     }
 
     .logo::before, .logo::after {
@@ -959,6 +1072,7 @@ blockquote p {
 
     .hero-description {
         margin: 0 auto 2rem;
+        max-width: 80%;
     }
 
     .cta-buttons {
@@ -967,17 +1081,60 @@ blockquote p {
 
     .design-philosophy {
         flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+    }
+    
+    .philosophy-content {
+        max-width: 800px;
+        margin-bottom: 30px;
         text-align: center;
     }
 
     .philosophy-content {
         max-width: 100%;
     }
-}
+}  
+
 
 @media (max-width: 768px) {
+    .main-nav {
+        padding: 15px 20px;
+    }
+    
+    .nav-toggle {
+        display: block;
+    }
+    
+    .nav-links {
+        position: fixed;
+        top: 70px;
+        right: -100%;
+        flex-direction: column;
+        background-color: rgba(0, 0, 0, 0.95);
+        backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(10px);
+        width: 80%;
+        max-width: 300px;
+        height: calc(100vh - 70px);
+        padding: 40px 20px;
+        gap: 20px;
+        transition: right 0.3s ease;
+        z-index: 999;
+        align-items: flex-start;
+    }
+    
+    .nav-links.active {
+        right: 0;
+    }
+    
     section {
-        padding: 70px 0;
+        padding: 60px 0;
+    }
+    
+    .hero {
+        padding-top: 100px;
     }
 
     h2.section-title {
@@ -989,11 +1146,13 @@ blockquote p {
         max-width: 400px;
         margin-left: auto;
         margin-right: auto;
+        gap: 20px;
     }
 
     .steps-container {
         flex-direction: column;
         align-items: center;
+        gap: 30px;
     }
 
     .steps-container::before {
@@ -1002,6 +1161,12 @@ blockquote p {
 
     .step {
         max-width: 100%;
+        width: 100%;
+    }
+
+    .mockup-screen, .interface-screen {
+        width: 250px;
+        max-height: 500px;
     }
 
     .footer-content {
@@ -1009,9 +1174,21 @@ blockquote p {
         gap: 30px;
         text-align: center;
     }
+    
+    .cta-features {
+        gap: 25px;
+    }
 }
 
 @media (max-width: 480px) {
+    .container {
+        padding: 0 20px;
+    }
+    
+    section {
+        padding: 40px 0;
+    }
+    
     .logo {
         font-size: 2.5rem;
     }
@@ -1019,18 +1196,57 @@ blockquote p {
     .tagline {
         font-size: 1.5rem;
     }
+    
+    .hero-description {
+        max-width: 100%;
+        font-size: 1rem;
+    }
 
     .cta-buttons {
         flex-direction: column;
         gap: 15px;
+        width: 100%;
     }
 
     .btn {
         width: 100%;
+        padding: 10px 20px;
+    }
+    
+    .mockup-screen, .interface-screen {
+        width: 220px;
+        max-height: 440px;
+    }
+    
+    .benefit-card {
+        padding: 20px 15px;
+    }
+    
+    .cta-features {
+        flex-direction: column;
+        gap: 20px;
+        align-items: center;
+    }
+    
+    .cta-feature {
+        width: 100%;
+        max-width: 200px;
     }
 
     .footer-links {
         flex-direction: column;
         gap: 15px;
+    }
+    
+    h2.section-title {
+        font-size: 1.8rem;
+    }
+    
+    .cta-title {
+        font-size: 2rem;
+    }
+    
+    .cta-description {
+        font-size: 1rem;
     }
 }
